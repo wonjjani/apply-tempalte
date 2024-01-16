@@ -51,6 +51,24 @@ async def login(data: Login_example):
     token = encToken(user.id)
     return ({"ok": "true"}, token)
 
+@app.post("/api/application", tags=["application"])
+async def application(data : Application_example, token : str = Header(...)):
+    user = check_auth(token)
+    
+    if not user: 
+        return {"로그인 후 이용 가능합니다."}
+    
+    db_value = Application(
+        email = data.email,
+        content = data.content,
+        phone = data.phone
+    )
+    
+    with SessionLocal() as db:  
+        db.add(db_value)  
+        db.commit()
+
+    return {"ok": "True"}
 
 @app.post("/api/authcheck", tags=["authcheck test"])
 async def authcheck(token : str = Header(...)):

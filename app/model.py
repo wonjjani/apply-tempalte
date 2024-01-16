@@ -45,3 +45,8 @@ class Login_example(BaseModel):
     username: str
     password: str
     
+class Application_example(BaseModel):
+    email : str 
+    content : str 
+    phone : str 
+    
