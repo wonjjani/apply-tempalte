@@ -1,10 +1,5 @@
-from datetime import datetime
-from typing import Optional
-import random
-
-from fastapi import Depends, FastAPI, HTTPException, Header, Response
+from fastapi import FastAPI, HTTPException, Header, Response
 from pydantic import BaseModel, constr
-from fastapi.security import OAuth2PasswordBearer
 
 app = FastAPI()
 
