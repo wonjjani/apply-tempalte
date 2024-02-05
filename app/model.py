@@ -40,7 +40,6 @@ class Register_example(BaseModel):
             return False
         return param
 
-
 class Login_example(BaseModel):
     username: str
     password: str

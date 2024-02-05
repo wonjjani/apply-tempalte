@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException, Header, Response
 from pydantic import BaseModel, constr
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
@@ -7,9 +8,19 @@ from database import *
 from model import *
 from tools import *
 
+
+
 Base.metadata.create_all(
     bind=engine
 )  
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Set this to your frontend's URL in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/api/register", tags=["register"])
 async def register(data: Register_example): 
