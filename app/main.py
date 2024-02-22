@@ -8,15 +8,13 @@ from database import *
 from model import *
 from tools import *
 
-
-
 Base.metadata.create_all(
     bind=engine
 )  
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Set this to your frontend's URL in production
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
