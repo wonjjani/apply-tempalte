@@ -89,6 +89,7 @@ async def authcheck(token : str = Header(...)):
     return {"recived_token": token}
 
 
+
 if __name__ == "__main__":
     import uvicorn
 
